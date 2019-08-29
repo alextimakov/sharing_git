@@ -1,9 +1,9 @@
-#### Basic commands
-##### 3 stages of file in git
+### Basic commands
+#### 3 stages of file in git
 - Working locally
 
 
-##### git config
+#### git config
 - 3 levels of config, always apply the lowest one
 - check existing config: `git config --list --show-origin`
 - config global settings: 
@@ -14,11 +14,11 @@
 - ask for help if not sure:
     - `git help command`
     - `git command -h`
-##### git aliases
+#### git aliases
 - make an alias for simple command: `git config --global alias.<alias> <command>`
 - make an alias for complex command: `git config --global alias.<alias> '<command>'`
 - stick to similar aliases [here]()
-##### getting a git repository
+#### getting a git repository
 - initialize locally: 
     - go to directory: `cd /c/users/timakov/needed_dir`
     - create .git: `git init`
@@ -28,7 +28,7 @@
 - clone existing repo
     - find repo on github and copy its link
     - clone repo:  `git clone <link_to_repo> <folder_to_clone>`
-##### recording changes to repo
+#### recording changes to repo
 - all files are either tracked (exist in last commit) or untracked (new or removed)
 
 - check files’ statuses: `git status`
@@ -43,18 +43,18 @@
 - remove file from directory & stage removal from git: `git rm <filename>`
 - remove file only from staged: `git rm --cached README`
 - rename file: `git mv <file_from> <file_to>`
-##### view the commit history
+#### view the commit history
 - bare history request: `git log`
 - check diff for the last n commits: `git log -p -<n>`
 - check stats of each commit: `git log --stat`
 - print history up-to-format: `git log --pretty=format:"<format>"` 
 - [formats here](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
 - get ASCII graph of changes: `git log --pretty=format:"%h %s" --graph`
-##### undoing things
+#### undoing things
 - update the last made commit: `git commit --amend`
 - unstage selected file: `git reset HEAD <filename>`
 - unmodify selected file: `git checkout -- <filename>`
-##### working with remotes
+#### working with remotes
 - check remotes you're working on: `git remove -v`
 - get info about remote: `git remote show <remote>`
 - fetch data with all branches from remote: `git fetch <remote>`
@@ -62,7 +62,7 @@
 - push project upstream: `git push <remote> <branch_to_push>`
 - you can't push to the same remote branch if someone pushed there already, fetch first
 - rename remote: `git remote rename <old_remote> <new_remote>`
-##### tagging version
+#### tagging version
 - list all tags: `git tag`
 - find and list tags by regex: `git tag -l "<*tag*>"`
 - create lightweight tag: `git tag <tag>`
@@ -75,14 +75,21 @@
 - delete remote tag: `git push origin --delete <tag>`
 - checkout on tag: `git checkout <tag>`
 - checkout with creating new branch: `git checkout -b <branch> <tag>`
-#### Branching and merging
-##### Branching logic
+### Branching and merging
+#### Branching logic
 - create new branch: `git branch <branch_name>`
 - HEAD is a pointer to current branch
-- 
+- ![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/branching_model.PNG)
 
-##### possible errors
+
+#### possible errors and flaws
 - removing modified files: 
     - cause: `git rm <modified>`
-    - traceback: the following file has local modifications
-    - solution: 
+    - traceback: the following file has local modifications \ have changes staged in the index
+    - solution: commit all changes -> remove files-> then commit removal
+- trying to work with non-existing file \ pointer:
+    - cause: `git checkout <branch_name>` 
+    - error: pathspec 'testing' did not match any file(s) known to git
+    - solution: add necessary files \ pointer
+- if you don't have file, you can push and it still stays in remote repo
+- 
