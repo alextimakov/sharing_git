@@ -104,7 +104,8 @@
 - merging conflicts solving:
     - error: Automatic merge failed; fix conflicts and then commit the result
     - check the reason with `git status`
-    - solution: `git mergetool` 
+    - solution: `git mergetool`
+    - [info about advanced merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging) 
 
 #### possible errors and flaws
 - removing modified files: 
