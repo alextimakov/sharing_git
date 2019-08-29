@@ -2,7 +2,7 @@
 #### 3 stages of file in git
 - Working locally
 
-
+![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/git_stages.png)
 #### git config
 - 3 levels of config, always apply the lowest one
 - check existing config: `git config --list --show-origin`
@@ -31,6 +31,7 @@
 #### recording changes to repo
 - all files are either tracked (exist in last commit) or untracked (new or removed)
 
+![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/file_stages.png)
 - check files’ statuses: `git status`
 - adding files to tracked: `git add <filename> | git add <directory>`
 - add selected content to the next commit: `git add <filename>`
@@ -74,13 +75,16 @@
 - delete local tag: `git tag -d <tag>`
 - delete remote tag: `git push origin --delete <tag>`
 - checkout on tag: `git checkout <tag>`
-- checkout with creating new branch: `git checkout -b <branch> <tag>`
 ### Branching and merging
 #### Branching logic
 - create new branch: `git branch <branch_name>`
 - HEAD is a pointer to current branch
-- ![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/branching_model.PNG)
 
+![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/branching_model.PNG)
+
+- list all existing branches (local & remote): `git branch -a`
+- checkout with creating new branch: `git checkout -b <branch>`
+- 
 
 #### possible errors and flaws
 - removing modified files: 
