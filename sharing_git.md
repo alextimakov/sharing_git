@@ -92,15 +92,19 @@
     - commit changes to it
     - checkout back to master
     - merge with previous (fast-forward) commit
+    - delete new branch if not needed in future
 - not-so-easy scenario:
     - checkout to new branch 
     - commit changes to it
     - checkout back to master
     - merge with the common ancestor (recursive strategy)
+    - delete new branch if not needed in future
     
 ![alt text]()
-- hard way to do merging:
-    - use: `git mergetool` 
+- merging conflicts solving:
+    - error: Automatic merge failed; fix conflicts and then commit the result
+    - check the reason with `git status`
+    - solution: `git mergetool` 
 
 #### possible errors and flaws
 - removing modified files: 
