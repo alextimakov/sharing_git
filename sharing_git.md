@@ -90,9 +90,17 @@
     - commit all changes
     - checkout to new branch
     - commit changes to it
+    - checkout back to master
     - merge with previous (fast-forward) commit
 - not-so-easy scenario:
-    - basic merging
+    - checkout to new branch 
+    - commit changes to it
+    - checkout back to master
+    - merge with the common ancestor (recursive strategy)
+    
+![alt text]()
+- hard way to do merging:
+    - use: `git mergetool` 
 
 #### possible errors and flaws
 - removing modified files: 
