@@ -103,8 +103,14 @@
 ![alt text]()
 - merging conflicts solving:
     - error: Automatic merge failed; fix conflicts and then commit the result
-    - check the reason with `git status`
-    - solution: `git mergetool`
+    - check the reason of conflict: `git status`
+    - solution: `git merge <branch>`
+    - go to IDE or `git mergetool`
+    - everything above `====` is for HEAD version
+    - resolve all the differences and leave final version in master branch
+    - delete all `<<<<`, `>>>>`, and `====`
+    - confirm changes: `git commit`
+    - if need to add only one file as resolution: `git add <filename>`
     - [info about advanced merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging) 
 
 #### possible errors and flaws
