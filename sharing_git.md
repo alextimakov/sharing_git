@@ -84,7 +84,15 @@
 
 - list all existing branches (local & remote): `git branch -a`
 - checkout with creating new branch: `git checkout -b <branch>`
-- 
+- it’s best to have a clean working state when you switch branches
+- when switch branches, Git resets your working directory to look like the last commit on that branch
+- easiest scenario: 
+    - commit all changes
+    - checkout to new branch
+    - commit changes to it
+    - merge with previous (fast-forward) commit
+- not-so-easy scenario:
+    - basic merging
 
 #### possible errors and flaws
 - removing modified files: 
