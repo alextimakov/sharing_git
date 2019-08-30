@@ -28,6 +28,7 @@
 - clone existing repo
     - find repo on github and copy its link
     - clone repo:  `git clone <link_to_repo> <folder_to_clone>`
+    - name a remote whatever you like: `git clone -o <remote_name>` 
 #### recording changes to repo
 - all files are either tracked (exist in last commit) or untracked (new or removed)
 
@@ -58,11 +59,15 @@
 #### working with remotes
 - check remotes you're working on: `git remove -v`
 - get info about remote: `git remote show <remote>`
-- fetch data with all branches from remote: `git fetch <remote>`
-- pull data from the identical branch: `git pull`
+- synchronize with remote: `git fetch <remote>`
+![alt text]()
+- fetch from all remotes: `git fetch --all`
+- pull data (fetch + merge in respect to tracking branches): `git pull`
 - push project upstream: `git push <remote> <branch_to_push>`
 - you can't push to the same remote branch if someone pushed there already, fetch first
 - rename remote: `git remote rename <old_remote> <new_remote>`
+- create tracking branch: `git checkout -b <local_branch> <upstream_remote_branch>`
+- delete remote branch: `git push <remote> --delete <branch>`
 #### tagging version
 - list all tags: `git tag`
 - find and list tags by regex: `git tag -l "<*tag*>"`
@@ -83,7 +88,12 @@
 ![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/branching_model.PNG)
 
 - list all existing branches (local & remote): `git branch -a`
+- check the latest commit on each branch: `git branch -v`
+- check the latest commit + tracking branches: `git branch -vv`
 - checkout with creating new branch: `git checkout -b <branch>`
+- check what is merged to current branch: `git branch --merged`
+- check what is not merged to <branch-name>: `git branch --no-merged <branch_name>`
+ 
 - it’s best to have a clean working state when you switch branches
 - when switch branches, Git resets your working directory to look like the last commit on that branch
 - easiest scenario: 
@@ -113,7 +123,24 @@
     - if need to add only one file as resolution: `git add <filename>`
     - [info about advanced merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging) 
 
-#### possible errors and flaws
+#### branching workflows
+- long-running branches
+- topic branches
+
+#### rebasing
+- take the patch of change and reapply it on top of master's commit
+- rebase feature branch it to master: 
+    - `git checkout <feature>`
+    - `git rebase <master>`
+    - `git checkout <master>`
+    - `git merge <feature>`
+- complex rebase:
+    - `git rebase --onto <basebranch> <topic_branch> <subtopic_branch>`
+    - `git checkout <basebranch>`
+    - `git merge <subtopic_branch>`
+- do not rebase commits that exist outside your repository and people may have based work on them
+
+#### errors / conflicts / common phrases 
 - removing modified files: 
     - cause: `git rm <modified>`
     - traceback: the following file has local modifications \ have changes staged in the index
@@ -123,4 +150,10 @@
     - error: pathspec 'testing' did not match any file(s) known to git
     - solution: add necessary files \ pointer
 - if you don't have file, you can push and it still stays in remote repo
-- 
+- trying to delete --no-merged branch:
+    - error: The branch 'testing' is not fully merged.  
+    - solution: merge branch -> delete or `git branch -D <branch_name>`
+- branch <name> set up to track remote branch <name> from <remote>
+    - cause: `git checkout <branch_name>`
+    - track remote branch
+    - set up upstream to current branch: `git branch -u <remote>/<branch_name>`
