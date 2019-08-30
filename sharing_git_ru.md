@@ -146,6 +146,7 @@
 - if this happened:
     - check info upon patch-id
     - when fetching data, try: `git pull --rebase`
+    - added new line
     
 #### topics for later
 - [filter-branch](https://manishearth.github.io/blog/2017/03/05/understanding-git-filter-branch/)
