@@ -22,9 +22,11 @@
 - инициализируем репо с 0: 
     - идём в нужную директорию: `cd /c/users/timakov/needed_dir`
     - создаём файл .git: `git init`
-    - запускаем контроль версий: 
+    - вяжемся к удалённому репо: ` git remote add <remote_name> <url.git>`
+    - запускаем контроль версий:
         - начинаем отслеживать всё: `git add .`
         - делаем первый коммит: `git commit -m "initial commit"`
+    - настраиваем апстрим и пушим: `git push --set-upstream <remote> <remote_branch>`
 - клонируем существующий репо:
     - находим репо на github и копируем ссылку на него
     - клонируем репо по ссылке: `git clone <link_to_repo> <folder_to_clone>`
@@ -60,7 +62,7 @@
 - убрать выбранный файл из отслеживаемых: `git reset HEAD <filename>`
 - откатить изменения в выбранной файле: `git checkout -- <filename>`
 #### working with remotes
-- проверить удалённые репо и ветки: `git remove -v`
+- проверить удалённые репо и ветки: `git remote -v`
 - получить информацию об удалённом репо: `git remote show <remote>`
 - забрать данные с удалённого репо: `git fetch <remote>`
 ![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/fetch_remote.PNG)
