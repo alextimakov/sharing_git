@@ -156,7 +156,16 @@
     - integration-manager workflow
         - multiple repositories
         - each has w access to own and r to all others
+        - integration manager push to public blessed repo
+        - each clones repo and makes changes
+        - each push changes to public own repo
+        - integration manager add each's repo as remote and merges locally 
         - integration manager check commits and push to blessed repository
+     - shared repository model
+     - fork and pull model
+        - pull requests: 
+        - CLI: `git request-pull <remot_branch> <url> <branch_to_push>`
+        - easier via GUI on github
     
 #### errors / conflicts / common phrases 
 - removing modified files: 
@@ -175,3 +184,8 @@
     - cause: `git checkout <branch_name>`
     - track remote branch
     - set up upstream to current branch: `git branch -u <remote>/<branch_name>`
+- forking vs cloning:
+    - fork share a connection with the original repo
+    - if clone - not able to pull and push unless added as collaborator
+    - if fork - can pull and push via pull requests
+    - clone won't bring issues, pull requests and other repo info

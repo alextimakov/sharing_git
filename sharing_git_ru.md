@@ -23,9 +23,9 @@
     - идём в нужную директорию: `cd /c/users/timakov/needed_dir`
     - создаём файл .git: `git init`
     - запускаем контроль версий: 
-        - `git add .`
-        - `git commit -m "initial commit"`
-- клонируем существующий репо
+        - начинаем отслеживать всё: `git add .`
+        - делаем первый коммит: `git commit -m "initial commit"`
+- клонируем существующий репо:
     - находим репо на github и копируем ссылку на него
     - клонируем репо по ссылке: `git clone <link_to_repo> <folder_to_clone>`
     - можем назвать его локально как требуется: `git clone -o <remote_name>` 
@@ -79,55 +79,53 @@
 - найти теги через регекс: `git tag -l "<*tag*>"`
 - создать лёгкий тег: `git tag <tag>`
 - создать аннотированный тег: `git tag -a <tag> -m "tag_message"`
-- show selected tag: `git show <tag>`
-- tag commit later: `git tag -a <tag> <commit_hash_7>`
-- share tag: `git push <remote> <tag>`
-- share all tags: `git push <remote> --tags`
-- delete local tag: `git tag -d <tag>`
-- delete remote tag: `git push origin --delete <tag>`
-- checkout on tag: `git checkout <tag>`
+- показать выбранный тег: `git show <tag>`
+- затегировать имеющийся коммит: `git tag -a <tag> <commit_hash_7>`
+- расшарить тег: `git push <remote> <tag>`
+- расшарить все теги: `git push <remote> --tags`
+- удалить локальный тег: `git tag -d <tag>`
+- удалить тег с удалённого репо: `git push origin --delete <tag>`
+- перейти на тег: `git checkout <tag>`
 ### Branching and merging
 #### Branching logic
-- create new branch: `git branch <branch_name>`
-- HEAD is a pointer to current branch
+- создать новую ветку: `git branch <branch_name>`
+- HEAD - это указатель на текущую ветку
 
 ![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/branching_model.PNG)
 
-- list all existing branches (local & remote): `git branch -a`
-- check the latest commit on each branch: `git branch -v`
-- check the latest commit + tracking branches: `git branch -vv`
-- checkout with creating new branch: `git checkout -b <branch>`
-- check what is merged to current branch: `git branch --merged`
-- check what is not merged to <branch-name>: `git branch --no-merged <branch_name>`
+- показать все ветки (локальные и удалённые): `git branch -a`
+- показать крайний коммит на каждой ветке: `git branch -v`
+- показать крайние коммиты и трековые ветки: `git branch -vv`
+- создать новую ветку и перейти в неё: `git checkout -b <branch>`
+- показать замерженные ветки: `git branch --merged`
+- показать незамерженные ветки к ветке <branch-name>: `git branch --no-merged <branch_name>`
  
-- it’s best to have a clean working state when you switch branches
-- when switch branches, Git resets your working directory to look like the last commit on that branch
-- easiest scenario: 
-    - commit all changes
-    - checkout to new branch
-    - commit changes to it
-    - checkout back to master
-    - merge with previous (fast-forward) commit
-    - delete new branch if not needed in future
-- not-so-easy scenario:
-    - checkout to new branch 
-    - commit changes to it
-    - checkout back to master
-    - merge with the common ancestor (recursive strategy)
-    - delete new branch if not needed in future
+- перед сменой ветки, лучше всего очистить рабочую зону
+- при смене веток, git возвращает рабочую зону в состоянии, соответствующе крайнего коммиту выбранной ветки
+- простейший сценарий мёржа: 
+    - коммитим все изменения на мастер
+    - переключаемся на новую ветку
+    - кделаем и коммитим все изменения в ней
+    - переходим обратно на мастер
+    - делаем мёрж с крайним (fast-forward) коммитом
+    - удаляем новую ветку, если в будущем будет не нужна
+- сценарий мёржа посложнее:
+    - тот же сценарий
+    - делаем мёрж с общим коммитом двух веток (recursive strategy)
+    - удаляем новую ветку, если в будущем будет не нужна
     
 ![alt text]()
-- merging conflicts solving:
-    - error: Automatic merge failed; fix conflicts and then commit the result
-    - check the reason of conflict: `git status`
-    - solution: `git merge <branch>`
-    - go to IDE or `git mergetool`
-    - everything above `====` is for HEAD version
-    - resolve all the differences and leave final version in master branch
-    - delete all `<<<<`, `>>>>`, and `====`
-    - confirm changes: `git commit`
-    - if need to add only one file as resolution: `git add <filename>`
-    - [info about advanced merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging) 
+- решаем мёрж конфликты:
+    - ошибка: Automatic merge failed; fix conflicts and then commit the result
+    - проверяем статус файлов в конфликте: `git status`
+    - пытаемся сделать мёрж: `git merge <branch>`
+    - идём в IDE или `git mergetool`
+    - всё выше `====` - версия в HEAD
+    - разрешаем все противоречия и оставляем в мастер ветке
+    - удаляем все `<<<<`, `>>>>`, и `====`
+    - подтверждаем изменения: `git commit`
+    - если лишь один файл является решением конфликта: `git add <filename>`
+    - больше о сложных схемах мёржа [тут](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging) 
 
 #### branching workflows
 - long-running branches
