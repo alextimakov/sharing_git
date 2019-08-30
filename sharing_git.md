@@ -17,7 +17,7 @@
 #### git aliases
 - make an alias for simple command: `git config --global alias.<alias> <command>`
 - make an alias for complex command: `git config --global alias.<alias> '<command>'`
-- stick to similar aliases [here]()
+- stick to similar aliases [here](https://confluence.biocad.ru/pages/viewpage.action?pageId=111907575)
 #### getting a git repository
 - initialize locally: 
     - go to directory: `cd /c/users/timakov/needed_dir`
@@ -60,11 +60,14 @@
 - check remotes you're working on: `git remove -v`
 - get info about remote: `git remote show <remote>`
 - synchronize with remote: `git fetch <remote>`
-![alt text]()
+![alt text](https://github.com/alextimakov/sharing_git/blob/master/media/fetch_remote.PNG)
 - fetch from all remotes: `git fetch --all`
 - pull data (fetch + merge in respect to tracking branches): `git pull`
 - push project upstream: `git push <remote> <branch_to_push>`
-- you can't push to the same remote branch if someone pushed there already, fetch first
+- you can't push to the same remote branch if someone pushed there already
+    - error: failed to push some refs to 'https://github.com/<your_repo>.git'
+    - `git fetch` -> `git push`
+- be very careful with forcing: `git push --force` 
 - rename remote: `git remote rename <old_remote> <new_remote>`
 - create tracking branch: `git checkout -b <local_branch> <upstream_remote_branch>`
 - delete remote branch: `git push <remote> --delete <branch>`
@@ -139,7 +142,22 @@
     - `git checkout <basebranch>`
     - `git merge <subtopic_branch>`
 - do not rebase commits that exist outside your repository and people may have based work on them
-
+- if this happened:
+    - check info upon patch-id
+    - when fetching data, try: `git pull --rebase`
+    
+#### topics for later
+- [filter-branch](https://manishearth.github.io/blog/2017/03/05/understanding-git-filter-branch/)
+- distributed workflows:
+    - centralized workflow
+        - single repository
+        - each has rw access
+        - pull & push
+    - integration-manager workflow
+        - multiple repositories
+        - each has w access to own and r to all others
+        - integration manager check commits and push to blessed repository
+    
 #### errors / conflicts / common phrases 
 - removing modified files: 
     - cause: `git rm <modified>`
