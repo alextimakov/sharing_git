@@ -167,7 +167,6 @@
     - check info upon patch-id
     - when fetching data, try: `git pull --rebase`
 
-
 #### workflows examples
 - local workflow examples:
     - have up-to-date base code, want to start new feature:
