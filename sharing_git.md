@@ -60,8 +60,12 @@
 
 #### undoing things
 - update the last made commit: `git commit --amend`
+- move HEAD to another commit: `git reset --soft <commit_hash>`
 - unstage selected file: `git reset HEAD <filename>`
+- unstage all (return to stage of previous commit): `git reset`
+- reset stage and working directory: `git reset --hard <commit_hash>`
 - unmodify selected file: `git checkout -- <filename>`
+- return files from previous commit to stage and working directory: `git checkout HEAD <file_name>`
 
 #### working with remotes
 - check remotes you're working on: `git remove -v`
@@ -241,6 +245,13 @@
     - if fork - can pull and push via pull requests
     - clone won't bring issues, pull requests and other repo info
 - errors while pull \ fetch:
+    - try to `git pull`
+    - files in the same branch on remote and on local differs
+    - error: `Automatic merge failed; fix conflicts and then commit the result`
+    - diff automatically appears in working directory
+    - fix conflict (remove unnecessary lines)
+    - `git add <cleaned_file>`
+    - `git commit` to finish merge 
 - be careful with flags `-f --force --hard` it will delete uncommitted changes
 
 #### useful resources
