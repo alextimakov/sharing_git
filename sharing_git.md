@@ -48,6 +48,7 @@
 - remove file from directory: `rm <filename>`
 - remove file from directory & stage removal from git: `git rm <filename>`
 - remove file only from staged: `git rm --cached README`
+- remove file only from staged: `git reset <filename>`
 - rename file: `git mv <file_from> <file_to>`
 
 #### view the commit history
@@ -57,6 +58,7 @@
 - print history up-to-format: `git log --pretty=format:"<format>"` 
 - [formats here](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
 - get ASCII graph of changes: `git log --pretty=format:"%h %s" --graph`
+- compact view for all history: `git log --oneline`
 
 #### undoing things
 - update the last made commit: `git commit --amend`
@@ -64,7 +66,7 @@
 - unstage selected file: `git reset HEAD <filename>`
 - unstage all (return to stage of previous commit): `git reset`
 - reset stage and working directory: `git reset --hard <commit_hash>`
-- unmodify selected file: `git checkout -- <filename>`
+- unmodify selected file locally: `git checkout -- <filename>`
 - return files from previous commit to stage and working directory: `git checkout HEAD <file_name>`
 
 #### working with remotes
@@ -157,6 +159,7 @@
 
 #### rebasing
 - take the patch of change and reapply it on top of master's commit
+- interactive rebasing: `git rebase --interactive`
 - rebase feature branch it to master: 
     - `git checkout <feature>`
     - `git rebase <master>`
