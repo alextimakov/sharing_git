@@ -46,7 +46,38 @@ scp -i ~/.ssh/path/to_pem_file user@server_ip:./path/to/desired/file/   ~/my_pro
 
 # Проверить, доступен ли интересующий сервер
 curl -Is server_ip
-``` 
+
+# Настройка swap на ubuntu 17.04+
+swapoff -a
+dd if=/dev/zero of=/swap.img bs=1G count=4
+mkswap /swap.img
+swapon -a
+grep SwapTotal /proc/meminfo
+
+# поиск файла по имени
+find ~/ -type f -name 'file_name'
+
+# поиск регулярными выражениями
+find -regextype egrep -regex '.*/[a-z]{3}.*[^i]$'
+
+# маунт папки в требуемую директорию
+mount --bind /source /target
+ 
+# отобразить пользователей \ группы
+users | groups
+
+# отобразить последние Х строк файла
+tail -n X file_name
+
+# создать символическую ссылку
+ln -s /source /target
+
+# изменить владельца директории
+chown -R $USER:group /directory
+
+# задать требуемое (тут - 774) разрешение на директорию
+chmod -R 774 /directory
+```
 
 
 ## vim cheatsheet
@@ -58,7 +89,7 @@ curl -Is server_ip
 :goto x
  
 # поиск по ключевому слову
-:? keyword
+:?keyword | :/keyword
  
 # удалить строку
 dd
