@@ -66,8 +66,11 @@
 - unstage selected file: `git reset HEAD <filename>`
 - unstage all (return to stage of previous commit): `git reset`
 - reset stage and working directory: `git reset --hard <commit_hash>`
-- unmodify selected file locally: `git checkout -- <filename>`
+- unmodify selected file locally: `git checkout -- <filename> origin master`
 - return files from previous commit to stage and working directory: `git checkout HEAD <file_name>`
+- revert commits: `git revert <commit_hash>`
+- revert multiple commits: `git revert <branch~4..branch~2>`
+- undo the latest commit (without creating new): `git revert -n HEAD` 
 
 #### working with remotes
 - check remotes you're working on: `git remove -v`
@@ -115,6 +118,7 @@
 - check what is not merged to <branch-name>: `git branch --no-merged <branch_name>`
 - delete remote branch: `git push --delete <remote_name> <branch_name>`
 - delete local branch: `git branch -d <branch_name>`
+- get difference between 2 branches: `git diff <branch_1>..<branch_2>`
 - some more conventions to get better understanding:
 
 ![alt text]()
