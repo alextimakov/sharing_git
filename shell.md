@@ -77,6 +77,15 @@ chown -R $USER:group /directory
 
 # задать требуемое (тут - 774) разрешение на директорию
 chmod -R 774 /directory
+
+# работа с пользователем в ubuntu
+sudo adduser username
+
+# дать пользователю административные права
+sudo usermod -aG sudo username
+
+# удалить пользователя (вместе с его папкой)
+sudo deluser --remove-home username
 ```
 
 
