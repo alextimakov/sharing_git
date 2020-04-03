@@ -86,6 +86,28 @@ sudo usermod -aG sudo username
 
 # удалить пользователя (вместе с его папкой)
 sudo deluser --remove-home username
+
+# посмотреть, сколько файлов в директории
+ls | wc -l
+```
+
+
+## tmux cheatsheet
+```shell script
+# открыть новую сессию 
+tmux new -s session_name
+
+# показать все существующие сессии
+tmux ls
+
+# подключиться к существующей сессии
+tmux a -t session_name
+
+# убить сессию
+tmux kill-session -t session_name
+
+# сделать detach от сессии
+ctrl+b d
 ```
 
 
