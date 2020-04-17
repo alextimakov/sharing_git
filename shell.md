@@ -89,6 +89,19 @@ sudo deluser --remove-home username
 
 # посмотреть, сколько файлов в директории
 ls | wc -l
+
+# сделать перманентный маунт
+mkdir target_folder
+echo //server_ip/source_folder ./target_folder auto user=folderuser,pass=pass 0 0 >> /etc/fstab
+mount -a
+
+# проверить версию ОС
+cat /etc/os-release
+
+# просмотреть все кроны у всех пользователей
+for user in $(cut -d':' -f1 /etc/passwd); do crontab -u $user -l; done
+
+# 
 ```
 
 
