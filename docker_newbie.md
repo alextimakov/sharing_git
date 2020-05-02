@@ -22,6 +22,12 @@ docker logs container_id 2>&1 | grep listening
 # check container stats
 docker stats --all --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" container_id
 
+# run container with mounted volume
+docker run -v /source/:/usr/bin/docker -p 0.0.0.0:8080:8080 -t -d --name nifi apache/nifi
+
+# work with images
+docker images
+docker image rm image_id
+
 # 
 ```
-
