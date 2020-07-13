@@ -101,6 +101,12 @@ cat /etc/os-release
 # просмотреть все кроны у всех пользователей
 for user in $(cut -d':' -f1 /etc/passwd); do crontab -u $user -l; done
 
+# узнать id пользователя
+id -u <username>
+
+# узнать id группы
+getent group <groupname> | awk -F: '{printf "Group %s with GID=%d\n", $1, $3}'
+
 # 
 ```
 
